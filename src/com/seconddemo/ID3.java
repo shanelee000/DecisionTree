@@ -1,22 +1,18 @@
 package com.seconddemo;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
 
 public class ID3 {
     private ArrayList<String> attribute = new ArrayList<String>(); // 存储属性的名称
@@ -36,7 +32,7 @@ public class ID3 {
 
     public static void main(String[] args) {
         ID3 inst = new ID3();
-        inst.readARFF(new File("/home/orisun/test/weather.nominal.arff"));
+        inst.readARFF(new File("C:\\Users\\meicai\\Documents\\meicai\\DecisionTree\\src\\com\\seconddemo\\data.arff"));
         inst.setDec("play");
         LinkedList<Integer> ll=new LinkedList<Integer>();
         for(int i=0;i<inst.attribute.size();i++){
@@ -48,7 +44,7 @@ public class ID3 {
             al.add(i);
         }
         inst.buildDT("DecisionTree", "null", al, ll);
-        inst.writeXML("/home/orisun/test/dt.xml");
+        inst.writeXML("C:\\Users\\meicai\\Documents\\meicai\\DecisionTree\\src\\com\\seconddemo\\dt.xml");
         return;
     }
 
